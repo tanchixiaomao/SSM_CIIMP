@@ -17,12 +17,11 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
         ">
-    <!--本项目把静态资源放在了WEB-INF的子目录下，资源映射如下-->
-    <!--<import resource="classpath:spring-mvc.xml"/>-->
-    <!--<mvc:resources mapping="/css/**" location="media/css/"/>-->
-    <!--<mvc:resources mapping="/js/**" location="media/js/"/>-->
-    <!--<mvc:resources mapping="/image/**" location="media/image/"/>-->
-    <!-- 配置注解驱动 可以将request参数与绑定到controller参数上 -->
+    <import resource="classpath:spring-mvc.xml"/>
+    <mvc:resources mapping="/css/**" location="media/css/"/>
+    <mvc:resources mapping="/js/**" location="media/js/"/>
+    <mvc:resources mapping="/image/**" location="media/image/"/>
+
     <mvc:annotation-driven/>
 
 </beans>

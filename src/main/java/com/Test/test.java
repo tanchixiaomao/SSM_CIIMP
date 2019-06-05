@@ -12,5 +12,7 @@ public class test {
     public void Connectiosn(){
         ApplicationContext context =
                 new ClassPathXmlApplicationContext("spring-mvc.xml");
+        UserService userService = (UserService) context.getBean("userService");
+      userService.Update_user_password("ka","kh");
     }
 }

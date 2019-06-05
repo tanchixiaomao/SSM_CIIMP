@@ -21,25 +21,20 @@ public class UserAction {
      * 登录接口 /user_login
      * @param user_name 用户名
      * @param user_password 密码
-     * @param model 给视图发送信息
      * @return 视图
      */
     @RequestMapping("/user_login")
-    public String user_login(String user_name, String user_password, Model model){
-        System.out.println("login "+user_name);
-       User u = userService.LoginCheck(user_name, user_password);
-        if(u.getUser_id()==null){
-            model.addAttribute("UserNotFound","账号不存在");
+    public String user_login(String user_name, String user_password,Model model){
+        if(!userService.LoginCheck(user_name, user_password)){
+            model.addAttribute("LoginError","账号或密码错误");
             return "login";
         }
+        User u  = userService.LoginType(user_name);
         if("Ordinary".equals(u.getUser_type())){
-            return "index";
-        }
-        else if("Administrator".equals(u.getUser_type())){
             return "admin";
         }
         else {
-            return "login";
+            return "admin";
         }
     }
 
@@ -55,28 +50,29 @@ public class UserAction {
     public String user_register(String user_name, String user_password, String email,Model model){
         if(userService.Regist_DuplicateChecking(user_name,email)){
             userService.RegistUser(user_name,user_password,email,"Ordinary");
+            model.addAttribute("RegisterSuccess","注册成功");
             return "login";
         }else{
-            model.addAttribute("RegistError","用户名或邮箱已经存在");
-            return "register";
+            model.addAttribute("RegisterError","用户名或邮箱已经存在");
+            return "login";
         }
     }
 
     /**
-     * 管理户注册接口 /user_regist
+     * 管理户注册接口 /admin_register
      * @param user_name 用户名
      * @param user_password 密码
      * @param email 邮箱
      * @param model 错误信息
      * @return 视图
      */
-    @RequestMapping("/user_regist")
+    @RequestMapping("/admin_register")
     public String admin_regist(String user_name, String user_password, String email,Model model){
         if(userService.Regist_DuplicateChecking(user_name,email)){
             userService.RegistUser(user_name,user_password,email,"Administrator");
             return "login";
         }else{
-            model.addAttribute("RegistError","用户名或邮箱已经存在");
+            model.addAttribute("AdminRegisterError","用户名或邮箱已经存在");
             return "register";
         }
     }
