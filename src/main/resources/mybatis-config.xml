@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <property name="dialect" value="mysql"/>
+            <property name="offsetAsPageNum" value="false"/>
+            <property name="rowBoundsWithCount" value="false"/>
+            <property name="pageSizeZero" value="true"/>
+            <property name="reasonable" value="false"/>
+            <property name="supportMethodsArguments" value="false"/>
+            <property name="returnPageInfo" value="none"/>
+        </plugin>
+    </plugins>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC">
+                <property name="" value=""/>
+            </transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/db_ssm_calamine"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+
+        </environment>
+
+    </environments>
+    <mappers>
+        <!-- 若映射文件mapper 是xml，则<mapper recourse...>，若映射文件为java文件，则<mapper class.....> -->
+        <mapper class="com.Dao.UserDao"/>
+
+
+
+    </mappers>
+
+
+</configuration>
