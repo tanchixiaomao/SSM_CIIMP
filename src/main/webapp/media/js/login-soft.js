@@ -13,19 +13,31 @@ function Register_Check() {
     var register_password_2  = $("#register_password_2").val();
     var psw  = $("#psw").val();
     var email_1 = $("#email_1");
-	if(psw!=register_password_2&&user_name_2!=""&&email_1!=""){
+    var flag = false;
+    if(user_name_2==""||email_1=="" || register_password_2 ==""){
+        $("#register_error").css("display","block");
+        $("#register_error").css("color","red");
+        $("#register_error").text("用户信息不能为空");
+        setTimeout(function(){$("#register_error").css("display","none");},2500);
+    }
+	if(psw!=register_password_2 ){
+        $("#register_error").css("display","block");
         $("#register_error").css("color","red");
         $("#register_error").text("两次密码不一致");
-	}else{
-		$("#user_register_1").submit();
+        setTimeout(function(){$("#register_error").css("display","none");},2500);
+	}else if(psw==register_password_2&&register_password_2!=""){
+		flag = true;
 	}
+	if(flag)
+		$("#user_register_1").submit();
+
 }
 var Login = function () {
 
     return {
         //main function to initiate the module
         init: function () {
-        	
+
            $('.login-form').validate({
 	            errorElement: 'label', //default input error message container
 	            errorClass: 'help-inline', // default input error message class
@@ -51,7 +63,7 @@ var Login = function () {
 	                }
 	            },
 
-	            invalidHandler: function (event, validator) { //display error alert on form submit   
+	            invalidHandler: function (event, validator) { //display error alert on form submit
 	                $('.alert-error', $('.login-form')).show();
 	            },
 
@@ -101,7 +113,7 @@ var Login = function () {
 	                }
 	            },
 
-	            invalidHandler: function (event, validator) { //display error alert on form submit   
+	            invalidHandler: function (event, validator) { //display error alert on form submit
 
 	            },
 
@@ -170,7 +182,7 @@ var Login = function () {
 	                }
 	            },
 
-	            invalidHandler: function (event, validator) { //display error alert on form submit   
+	            invalidHandler: function (event, validator) { //display error alert on form submit
 
 	            },
 
@@ -185,16 +197,14 @@ var Login = function () {
 	            },
 
 	            errorPlacement: function (error, element) {
-	                if (element.attr("name") == "tnc") { // insert checkbox errors after the container                  
+	                if (element.attr("name") == "tnc") { // insert checkbox errors after the container
 	                    error.addClass('help-small no-left-padding').insertAfter($('#register_tnc_error'));
 	                } else {
 	                    error.addClass('help-small no-left-padding').insertAfter(element.closest('.input-icon'));
 	                }
 	            },
 
-	            submitHandler: function (form) {
-	              form.submit();
-	            }
+
 	        });
 
 	        jQuery('#register-btn').click(function () {

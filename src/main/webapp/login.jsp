@@ -290,9 +290,7 @@
 			</div>
 
 			<div class="form-actions">
-
 				<input type="button" class="btn blue pull-right" value="Log up➤" onclick="Register_Check()">
-
 			</div>
 
 		</form>
@@ -364,11 +362,11 @@
 
 	<script>
 
-		jQuery(document).ready(function() {     
+		jQuery(document).ready(function() {
 
 		  App.init();
 
-		  Login.init();
+		   Login.init();
 
 		});
 

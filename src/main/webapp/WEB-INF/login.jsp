@@ -70,9 +70,7 @@
 	<!-- BEGIN LOGIN -->
 
 	<div class="content">
-
 		<!-- BEGIN LOGIN FORM -->
-
 		<form class="form-vertical login-form" action="/user_login" id="login_form_2">
 
 			<h3 class="form-title">Login to your account</h3>
@@ -167,11 +165,9 @@
 
 		</form>
 
-		<!-- END LOGIN FORM -->        
 
-		<!-- BEGIN FORGOT PASSWORD FORM -->
 
-		<form class="form-vertical forget-form" action="../index.jsp">
+		<form class="form-vertical forget-form" action="">
 
 			<h3 class="">Forget Password ?</h3>
 
@@ -211,47 +207,28 @@
 
 		</form>
 
-		<!-- END FORGOT PASSWORD FORM -->
-
-		<!-- BEGIN REGISTRATION FORM -->
-
-		<form class="form-vertical register-form" action="/user_register">
+		<form class="form-vertical register-form" action="/user_register" id="user_register_2">
 
 			<h3 class="">Sign Up</h3>
-
-			<p>Enter your account details below:</p>
-
+			<p id="register_error_2">Enter your account details below:</p>
 			<div class="control-group">
-
 				<label class="control-label visible-ie8 visible-ie9">Username</label>
-
 				<div class="controls">
-
 					<div class="input-icon left">
-
 						<i class="icon-user"></i>
-
-						<input class="m-wrap placeholder-no-fix" type="text" placeholder="Username" name="user_name"/>
-
+						<input class="m-wrap placeholder-no-fix" type="text" placeholder="Username"
+							   id="user_name_"
+							   name="user_name"/>
 					</div>
-
 				</div>
-
 			</div>
-
 			<div class="control-group">
-
 				<label class="control-label visible-ie8 visible-ie9">Password</label>
-
 				<div class="controls">
-
 					<div class="input-icon left">
-
 						<i class="icon-lock"></i>
-
-						<input class="m-wrap placeholder-no-fix" type="password" id="register_password"
+						<input class="m-wrap placeholder-no-fix" type="password" id="register_password_"
 							   placeholder="Password" name="user_password"/>
-
 					</div>
 
 				</div>
@@ -259,73 +236,46 @@
 			</div>
 
 			<div class="control-group">
-
 				<label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
-
 				<div class="controls">
-
 					<div class="input-icon left">
-
 						<i class="icon-ok"></i>
-
-						<input class="m-wrap placeholder-no-fix" type="password" placeholder="Re-type Your Password" name="rpassword"/>
-
+						<input class="m-wrap placeholder-no-fix" id="psw1" type="password"
+							   placeholder="Re-type Your Password"
+							   name="rpassword"/>
 					</div>
-
 				</div>
-
 			</div>
 
 			<div class="control-group">
-
 				<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-
 				<label class="control-label visible-ie8 visible-ie9">Email</label>
-
 				<div class="controls">
-
 					<div class="input-icon left">
 
 						<i class="icon-envelope"></i>
 
-						<input class="m-wrap placeholder-no-fix" type="text" placeholder="Email" name="email"/>
-
+						<input class="m-wrap placeholder-no-fix" type="text" placeholder="Email" id="email_2"
+							   name="email"/>
 					</div>
-
 				</div>
-
 			</div>
 
 			<div class="control-group">
-
 				<div class="controls">
-
 					<label class="checkbox">
-
 					<input type="checkbox" name="tnc"/> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
-
-					</label>  
-
+					</label>
 					<div id="register_tnc_error"></div>
 
 				</div>
 
 			</div>
-
 			<div class="form-actions">
-
 				<button id="register-back-btn" type="button" class="btn">
-
 				<i class="m-icon-swapleft"></i>  Back
-
 				</button>
-
-				<button type="submit" id="register-submit-btn" class="btn green pull-right">
-
-				Sign Up <i class="m-icon-swapright m-icon-white"></i>
-
-				</button>            
-
+				<input type="button" class="btn blue pull-right" value="Log up➤" onclick="Register_Check2()">
 			</div>
 
 		</form>
